@@ -38,7 +38,7 @@ db-migrate create <file_name>
 
 ### Create Collection
 
-You may call `createCollection` to create a collection in the database.
+You may call `createCollection` to create a collection in the bucket.
 
 ```js
 'use strict';
@@ -76,7 +76,7 @@ exports.up = async function (db) {
 
 ### Drop Collection
 
-You may call `dropCollection` to create a collection in the database.
+You may call `dropCollection` to create a collection in the bucket.
 Pass in the second parameter to `dropCollection` to specify the scope. By default, the scope is `_default`.
 
 ```js
@@ -87,7 +87,7 @@ exports.down = async function (db) {
 
 ### Create Index
 
-You may call `createIndex` to create an index in the database.
+You may call `createIndex` to create an index in the bucket.
 
 ```js
 exports.up = async function (db) {
@@ -97,10 +97,30 @@ exports.up = async function (db) {
 
 ### Drop Index
 
-You may call `dropIndex` to drop an index in the database.
+You may call `dropIndex` to drop an index in the bucket.
 
 ```js
 exports.down = async function (db) {
   await db.dropIndex('test', 'test_index');
+};
+```
+
+### Create Scope
+
+You may call `createScope` to create a scope in the bucket.
+
+```js
+exports.up = async function (db) {
+  await db.createScope('new_scope');
+};
+```
+
+### Drop Scope
+
+You may call `dropScope` to drop a scope in the bucket.
+
+```js
+exports.down = async function (db) {
+  await db.dropScope('new_scope');
 };
 ```

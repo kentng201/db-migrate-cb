@@ -176,6 +176,22 @@ const CouchbaseDriver = Base.extend({
             await connection.query(indexQuery);
             resolve();
         }).nodeify(callback);
+    },
+
+    createScope(scopeName: string, callback?: CallbackFunction) {
+        return new Promise(async (resolve) => {
+            await bucket.collections().createScope(scopeName);
+            await new Promise((res) => setTimeout(res, 1000));
+            resolve();
+        }).nodeify(callback);
+    },
+
+    dropScope(scopeName: string, callback?: CallbackFunction) {
+        return new Promise(async (resolve) => {
+            await bucket.collections().dropScope(scopeName);
+            await new Promise((res) => setTimeout(res, 1000));
+            resolve();
+        }).nodeify(callback);
     }
 });
 
