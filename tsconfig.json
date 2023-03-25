@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "rootDir": ".",
+        "paths": {
+            "src/*": [
+                "./src/*"
+            ]
+        },
+        "lib": [
+            "es2021"
+        ],
+        "sourceMap": false,
+        "target": "es2021",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": true,
+        "allowJs": false
+    },
+    "include": [
+        "index.ts",
+    ],
+    "exclude": [
+        "node_modules",
+        "**/__tests__/*",
+        "dist"
+    ]
+}
