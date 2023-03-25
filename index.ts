@@ -1,3 +1,5 @@
+// @ts-ignore
+import MigratorInterface from 'db-migrate/lib/interface/migratorInterface';
 import {
     CallbackFunction,
     InternalOptions
@@ -10,6 +12,16 @@ import {
     ICollectionSpec
 } from 'couchbase';
 import moment from 'moment';
+
+function dummy() {
+    // eslint-disable-next-line prefer-rest-params
+    arguments[arguments.length - 1]('not implemented');
+}
+
+// Add ability to create scope
+MigratorInterface.prototype.createScope = dummy;
+// Add ability to drop scope
+MigratorInterface.prototype.dropScope = dummy;
 
 let internals: InternalOptions = {
     mod: {

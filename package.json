@@ -1,6 +1,6 @@
 {
   "name": "db-migrate-cb",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "db-migrate for couchbase",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -31,6 +31,7 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "couchbase": "^4.2.2",
+    "db-migrate": "^0.11.13",
     "db-migrate-base": "^2.3.1",
     "moment": "^2.29.4"
   }
