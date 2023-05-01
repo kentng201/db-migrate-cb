@@ -149,11 +149,13 @@ const CouchbaseDriver = Base.extend({
     },
 
     createCollection: function (collectionName: string, scope?: string, callback?: CallbackFunction) {
-        scope = scope || scopeName;
+        if (!scope) {
+            scope = scopeName;
+        }
         return new Promise(async (resolve) => {
             const spec: ICollectionSpec = {
                 name: collectionName,
-                scopeName
+                scopeName: scope as string
             };
             await bucket.collections().createCollection(spec, {});
             await new Promise((res) => setTimeout(res, 1000));
@@ -164,6 +166,9 @@ const CouchbaseDriver = Base.extend({
     },
 
     dropCollection: function (collectionName: string, scope?: string, callback?: CallbackFunction) {
+        if (!scope) {
+            scope = scopeName;
+        }
         scope = scope || scopeName;
         return new Promise(async (resolve) => {
             await bucket.collections().dropCollection(collectionName, scope as string);
@@ -173,7 +178,9 @@ const CouchbaseDriver = Base.extend({
     },
 
     addIndex(collectionName: string, indexName: string, columns: string[], scope?: string, callback?: CallbackFunction) {
-        scope = scope || scopeName;
+        if (!scope) {
+            scope = scopeName;
+        }
         return new Promise(async (resolve) => {
             const indexQuery = `CREATE INDEX \`${indexName}\` ON \`${bucket.name}\`.\`${scope}\`.\`${collectionName}\`(${columns.join(', ')})`;
             await connection.query(indexQuery);
@@ -182,7 +189,9 @@ const CouchbaseDriver = Base.extend({
     },
 
     removeIndex(collectionName: string, indexName: string, scope?: string, callback?: CallbackFunction) {
-        scope = scope || scopeName;
+        if (!scope) {
+            scope = scopeName;
+        }
         return new Promise(async (resolve) => {
             const indexQuery = `DROP INDEX \`${bucket.name}\`.\`${scope}\`.\`${collectionName}\`.\`${indexName}\``;
             await connection.query(indexQuery);
