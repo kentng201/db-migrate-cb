@@ -1,6 +1,6 @@
 {
   "name": "db-migrate-cb",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "db-migrate for couchbase",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
