@@ -120,7 +120,7 @@ const CouchbaseDriver = Base.extend({
     },
 
     addMigrationRecord: function (migrationName: string, callback?: CallbackFunction) {
-        migrationName = migrationName.replaceAll('/', '');
+        migrationName = migrationName.replace(/\//g, '');
         return new Promise((resolve) => {
             bucket
                 .scope(scopeName)
@@ -134,7 +134,7 @@ const CouchbaseDriver = Base.extend({
     },
 
     deleteMigration: function (migrationName: string, callback?: CallbackFunction) {
-        migrationName = migrationName.replaceAll('/', '');
+        migrationName = migrationName.replace(/\//g, '');
         return new Promise(async (resolve) => {
             try {
                 const isMigrated = await bucket.scope(scopeName).collection(collectionName).get(migrationName);
